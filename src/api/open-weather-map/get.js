@@ -7,6 +7,7 @@ export const getWeatherForGeoloc = (lat, lng) => {
       .query({
         lat: lat,
         lon: lng,
+        units: 'metric',
         APPID: 'b433f7bbb7535c9a63909a7f9472b4a2'
       })
       .end((err, res) => {
@@ -22,6 +23,7 @@ export const getWeatherForCity = (city, country) => {
       .get('http://api.openweathermap.org/data/2.5/weather')
       .query({
         q: `${city},${country}`,
+        units: 'metric',
         APPID: 'b433f7bbb7535c9a63909a7f9472b4a2'
       })
       .end((err, res) => {
