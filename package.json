@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "country-data": "0.0.31",
+    "jest-cli": "^21.2.0",
     "react": "^15.6.2",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.2",
