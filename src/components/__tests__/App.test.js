@@ -1,8 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App';
+import React from 'react'
+import ReactTestUtils from 'react-dom/test-utils'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+import App from '../App';
+import Form from '../Form'
+
+describe('App', () => {
+  const subject = ReactTestUtils.renderIntoDocument(<App />)
+
+  describe('render', () => {
+    const formElem = ReactTestUtils.findRenderedComponentWithType(subject, Form)
+
+    it('should render the tree correctly', () => {
+      expect(formElem).not.toBe(undefined)
+    })
+  })
+})
