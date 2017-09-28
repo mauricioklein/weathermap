@@ -1,35 +1,38 @@
 import { getWeatherForGeoloc, getWeatherForCity } from '../get'
 
-describe('#getWeatherForGeoloc', () => {
-  it('should return a valid result', () => {
-    getWeatherForGeoloc(35, 139).then(body => {
-      expect(isValid(body)).toBe(true)
+import request from 'superagent';
+import * as apiMocks from '../../../utils/mocks/api'
+
+describe('API', () => {
+  var mock = null
+  beforeEach(() => mock = require('superagent-mock')(request, apiMocks.rules))
+  afterEach(() => mock.unset())
+
+  describe('#getWeatherForCity', () => {
+    it('should process success result', () => {
+      getWeatherForCity('Berlin', 'DE').then(body => {
+        expect(body).toEqual(apiMocks.cityResponse)
+      })
+    })
+
+    it('should process failure result', () => {
+      getWeatherForCity('Foo', 'Bar').then(() => {},
+        err => expect(err).toEqual(Error(500))
+      )
+    })
+  })
+
+  describe('#getWeatherForGeoloc', () => {
+    it('should process success result', () => {
+      getWeatherForGeoloc(10, 20).then(body => {
+        expect(body).toEqual(apiMocks.geolocResponse)
+      })
+    })
+
+    it('should process failure result', () => {
+      getWeatherForGeoloc('Foo', 'Bar').then(() => {},
+        err => expect(err).toEqual(Error(500))
+      )
     })
   })
 })
-
-describe('#getWeatherForCity', () => {
-  it('should return a valid result', () => {
-    getWeatherForCity('London', 'UK').then(body => {
-      expect(isValid(body)).toBe(true)
-    })
-  })
-})
-
-const isValid = (resp) => {
-  return validMainSection(resp.main)
-}
-
-const validMainSection = (mainSection) => {
-  if (mainSection === undefined) {
-    return false
-  }
-
-  return (
-    !isNaN(mainSection.temp) &&
-    !isNaN(mainSection.pressure) &&
-    !isNaN(mainSection.humidity) &&
-    !isNaN(mainSection.temp_min) &&
-    !isNaN(mainSection.temp_max)
-  )
-}
