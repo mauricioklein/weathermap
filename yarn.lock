@@ -6281,6 +6281,10 @@ style-loader@0.18.2:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+superagent-mock@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/superagent-mock/-/superagent-mock-3.6.0.tgz#8562b05fc9509fe24dd925b1c444c001ce874e7c"
+
 superagent@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.6.0.tgz#eb679651057c3462199c7b902b696c25350e1b87"
