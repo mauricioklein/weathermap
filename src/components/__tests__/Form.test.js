@@ -4,6 +4,10 @@ import Form from '../Form'
 import CityForm from '../CityForm'
 import GeolocForm from '../GeolocForm'
 
+// Superagent mock
+import request from 'superagent';
+import * as apiMocks from '../../utils/mocks/api'
+
 describe('Form', () => {
   const subject = ReactTestUtils.renderIntoDocument(<Form />)
 
@@ -52,6 +56,28 @@ describe('Form', () => {
 
       expect(geolocForm.props.isVisible).toBe(true)
       expect(geolocForm.props.searchCallback).toEqual(subject.triggerSearchByGeoloc)
+    })
+  })
+
+  describe('search triggers', () => {
+    const mockObj = require('superagent-mock')(request, apiMocks.rules)
+
+    describe('city search', () => {
+      beforeEach(() => subject.triggerSearchByCity('Berlin', 'DE'))
+
+      it('should update the state', () => {
+        expect(subject.state.loaded).toEqual(true)
+        expect(subject.state.data).toEqual(apiMocks.cityResponse)
+      })
+    })
+
+    describe('geoloc search', () => {
+      beforeEach(() => subject.triggerSearchByGeoloc('10', '20'))
+
+      it('should update the state', () => {
+        expect(subject.state.loaded).toEqual(true)
+        expect(subject.state.data).toEqual(apiMocks.geolocResponse)
+      })
     })
   })
 })

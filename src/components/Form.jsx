@@ -31,10 +31,8 @@ class Form extends Component {
     })
   }
 
-  triggerSearchByGeoloc(lat, lng) {
-    this.setState({loading: false})
-
-    getWeatherForGeoloc(lat, lng)
+  triggerSearchByCity(city, country) {
+    getWeatherForCity(city, country)
       .then(
         response => {
           this.setState({
@@ -45,10 +43,8 @@ class Form extends Component {
       )
   }
 
-  triggerSearchByCity(city, country) {
-    this.setState({loading: false})
-
-    getWeatherForCity(city, country)
+  triggerSearchByGeoloc(lat, lng) {
+    getWeatherForGeoloc(lat, lng)
       .then(
         response => {
           this.setState({
