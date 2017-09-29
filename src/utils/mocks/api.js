@@ -1,46 +1,47 @@
 // ./superagent-mock-config.js file
 
 const geolocResponse = {
-  "coord": {
-      "lon": 139,
-      "lat": 35
-  },
-  "weather": [
-      {
-          "id": 803,
-          "main": "Clouds",
-          "description": "broken clouds",
-          "icon": "04n"
-      }
-  ],
-  "base": "stations",
-  "main": {
-      "temp": 25,
-      "pressure": 1000,
-      "humidity": 65,
-      "temp_min": 25,
-      "temp_max": 25
-  },
-  "visibility": 10000,
-  "wind": {
-      "speed": 4.6,
-      "deg": 50
-  },
-  "clouds": {
-      "all": 75
-  },
-  "dt": 1506591180,
-  "sys": {
-      "type": 1,
-      "id": 7573,
-      "message": 0.0026,
-      "country": "JP",
-      "sunrise": 1506544593,
-      "sunset": 1506587523
-  },
-  "id": 1851632,
-  "name": "Shuzenji",
-  "cod": 200
+    "coord": {
+        "lon": -16,
+        "lat": -14
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 21.53,
+        "pressure": 1029.61,
+        "humidity": 100,
+        "temp_min": 21.53,
+        "temp_max": 21.53,
+        "sea_level": 1029.59,
+        "grnd_level": 1029.61
+    },
+    "wind": {
+        "speed": 6.23,
+        "deg": 104.501
+    },
+    "rain": {
+        "3h": 0.54
+    },
+    "clouds": {
+        "all": 80
+    },
+    "dt": 1506693348,
+    "sys": {
+        "message": 0.0019,
+        "sunrise": 1506667678,
+        "sunset": 1506711620
+    },
+    "id": 0,
+    "name": "",
+    "cod": 200
 }
 
 const cityResponse = {
