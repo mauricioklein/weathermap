@@ -24,23 +24,23 @@ class GeolocForm extends Component {
       <div className="form-horizontal" style={style}>
         { /* City field */ }
         <div className="form-group">
-          <label className="control-label col-sm-3">Lat:</label>
-          <div className="col-sm-9">
-            <input ref={(input) => this.latField = input} type="text" className="form-control" placeholder="Enter latitude" />
+          <label className="control-label col-md-3">Lat:</label>
+          <div className="col-md-9">
+            <input ref={(input) => this.latField = input} type="text" className="form-control" placeholder="Enter latitude (e.g. 52.522392)" />
           </div>
         </div>
 
         { /* Country field */ }
         <div className="form-group">
-          <label className="control-label col-sm-3">Lng:</label>
-          <div className="col-sm-9">
-            <input ref={(input) => this.lngField = input} type="text" className="form-control" placeholder="Enter longitude" />
+          <label className="control-label col-md-3">Lng:</label>
+          <div className="col-md-9">
+            <input ref={(input) => this.lngField = input} type="text" className="form-control" placeholder="Enter longitude (e.g. 13.412346)" />
           </div>
         </div>
 
         { /* Submit button */ }
         <div className="form-group">
-          <div className="col-sm-12">
+          <div className="col-md-10 col-md-offset-2">
             <button onClick={this.callback} className="btn btn-default">Search</button>
           </div>
         </div>

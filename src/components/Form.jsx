@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FormSelector from './FormSelector'
 import CityForm from './CityForm'
 import GeolocForm from './GeolocForm'
 import WeatherDisplay from './WeatherDisplay'
@@ -59,18 +60,19 @@ class Form extends Component {
     const { form, loaded, data } = this.state
 
     return (
-      <div className="container col-sm-6 col-sm-offset-3">
-        <div className="form-group">
-          <div className="btn-group btn-group-lg">
-            <button type="button" className="cityFormBtn btn btn-default" onClick={() => this.setActiveForm(CITY_FORM_ID)}  >City Form  </button>
-            <button type="button" className="geolocFormBtn btn btn-default" onClick={() => this.setActiveForm(GEOLOC_FORM_ID)}>Geoloc Form</button>
-          </div>
+      <div className="container">
+        <div className="col-sm-6">
+          <FormSelector
+            activateCityForm={() => this.setActiveForm(CITY_FORM_ID)}
+            activateGeolocForm={() => this.setActiveForm(GEOLOC_FORM_ID)}
+          />
+          <CityForm   isVisible={form === CITY_FORM_ID}   searchCallback={this.triggerSearchByCity}   />
+          <GeolocForm isVisible={form === GEOLOC_FORM_ID} searchCallback={this.triggerSearchByGeoloc} />
         </div>
 
-        <CityForm   isVisible={form === CITY_FORM_ID}   searchCallback={this.triggerSearchByCity}   />
-        <GeolocForm isVisible={form === GEOLOC_FORM_ID} searchCallback={this.triggerSearchByGeoloc} />
-
-        { loaded && <WeatherDisplay data={data} /> }
+        <div className="col-sm-6">
+          { loaded && <WeatherDisplay data={data} /> }
+        </div>
       </div>
     )
   }

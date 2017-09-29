@@ -24,23 +24,23 @@ class CityForm extends Component {
       <div className="form-horizontal" style={style}>
         { /* City field */ }
         <div className="form-group">
-          <label className="control-label col-sm-3">City:</label>
-          <div className="col-sm-9">
-            <input ref={(input) => this.cityField = input} type="text" className="form-control" placeholder="Enter city" />
+          <label className="control-label col-md-3">City:</label>
+          <div className="col-md-9">
+            <input ref={(input) => this.cityField = input} type="text" className="form-control" placeholder="Enter city (e.g. London)" />
           </div>
         </div>
 
         { /* Country field */ }
         <div className="form-group">
-          <label className="control-label col-sm-3">Country Code:</label>
-          <div className="col-sm-9">
-            <input ref={(input) => this.countryField = input} type="text" className="form-control" placeholder="Enter country code" />
+          <label className="control-label col-md-3">Country Code:</label>
+          <div className="col-md-9">
+            <input ref={(input) => this.countryField = input} type="text" className="form-control" placeholder="Enter country code (e.g. UK)" />
           </div>
         </div>
 
         { /* Submit button */ }
         <div className="form-group">
-          <div className="col-sm-12">
+          <div className="col-md-10 col-md-offset-2">
             <button onClick={this.callback} className="btn btn-default">Search</button>
           </div>
         </div>
