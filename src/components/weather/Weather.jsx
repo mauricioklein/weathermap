@@ -12,6 +12,9 @@ export const mapWeatherIDtoIcon = (id) => {
     case between(id, 600, 699):
       return <SnowCloud />
 
+    case between(id, 700, 799):
+      return <WindyCloud />
+
     case between(id, 801, 809):
       return <SunCloud />
 
@@ -126,7 +129,7 @@ export const Sunshine = () => (
   </svg>
 )
 
-export const WindCloud = () => (
+export const WindyCloud = () => (
   <svg className="windy-cloud" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
     <g className="cloud-wrap">
     <path className="cloud" d="M417,166.1c-24-24.5-57.1-38.8-91.7-38.8c-34.6,0-67.7,14.2-91.7,38.8c-52.8,2.5-95,46.2-95,99.6
@@ -143,8 +146,7 @@ export const WindCloud = () => (
 )
 
 export const Wind = () => (
-  <svg version="1.1" id="wind" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 300.492 300.492" style={{enableBackground: "new 0 0 300.492 300.492"}} xmlSpace="preserve">
+  <svg version="1.1" id="wind" className="wind" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300.492 300.492" style={{enableBackground: "new 0 0 300.492 300.492"}} xmlSpace="preserve">
     <g>
       <g>
         <g>
