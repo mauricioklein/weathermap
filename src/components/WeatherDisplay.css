@@ -73,7 +73,7 @@ article {
 }
 
 .info .city,
-.night {
+.description {
 	font-size: 24px;
 	font-weight: 200;
 	position: relative;
@@ -116,8 +116,8 @@ article {
 }
 
 .icon {
-	width: 84px;
-	height: 84px;
+	width: 120px;
+	height: 120px;
 	-webkit-order: 0;
 	-ms-flex-order: 0;
 	order: 0;

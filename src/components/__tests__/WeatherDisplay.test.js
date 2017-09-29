@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import WeatherDisplay from '../WeatherDisplay'
+import * as ApiMocks from '../../utils/mocks/api'
 
 /*
-  TestUtils isn't able to recognize a stateless function
+  ReactTestUtils isn't able to recognize a stateless function
   as a React component. So, we wrap the real component in a
   stateful component for testing purposes
 */
@@ -13,38 +14,40 @@ class Wrapper extends Component {
 
 describe('WeatherDisplay', () => {
   describe('with weather for city', () => {
-    const data = {
-      name: 'Berlin',
-      sys: { country: 'DE' },
-      coord: { lat: 10, lon: 20 },
-      main: { temp: 20.5 }
-    }
+    const data = ApiMocks.cityResponse
     const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={data} />)
 
-    const outline = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city').textContent
-    const temperature = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp').textContent
+    const outline =      ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city'       ).textContent
+    const description =  ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'description').textContent
+    const temperature =  ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp'       ).textContent
+    const windSpeed =    ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'wind-speed' ).textContent
+    const sunshineIcon = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'sunshine'   )
 
     it('renders the component correctly', () => {
-      expect(outline).toEqual('Berlin - Germany')
-      expect(temperature).toEqual('20.5 °C')
+      expect(outline    ).toEqual('Berlin - Germany')
+      expect(description).toEqual('clear sky')
+      expect(temperature).toEqual('17 °C')
+      expect(windSpeed  ).toEqual('4.1 km/h')
+      expect(sunshineIcon).not.toBeNull()
     })
   })
 
   describe('with weather for geoloc', () => {
-    const data = {
-      name: 'Berlin',
-      sys: {},
-      coord: { lat: 10, lon: 20 },
-      main: { temp: 20.5 }
-    }
+    const data = ApiMocks.geolocResponse
     const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={data} />)
 
-    const outline = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city').textContent
-    const temperature = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp').textContent
+    const outline =       ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city'       ).textContent
+    const description =   ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'description').textContent
+    const temperature =   ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp'       ).textContent
+    const windSpeed =     ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'wind-speed' ).textContent
+    const rainCloudIcon = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'rain-cloud' )
 
     it('renders the component correctly', () => {
-      expect(outline).toEqual('Berlin - 10,20')
-      expect(temperature).toEqual('20.5 °C')
+      expect(outline    ).toEqual(' - -14,-16')
+      expect(description).toEqual('light rain')
+      expect(temperature).toEqual('22 °C')
+      expect(windSpeed  ).toEqual('6.23 km/h')
+      expect(rainCloudIcon).not.toBeNull()
     })
   })
 })

@@ -1,4 +1,6 @@
 import React from 'react';
+import * as Weather from './weather/Weather'
+
 import './WeatherDisplay.css'
 
 const lookup = require('country-data').lookup
@@ -22,8 +24,17 @@ const WeatherDisplay = (props) => {
         <article>
           <div className="info">
             <div className="city">{data.name} - {outline()}</div>
-            <div className="night">Night - 22:07 PM</div>
-            <div className="temp">{data.main.temp} °C</div>
+            <div className="description">{data.weather[0].description}</div>
+            <div className="temp">{Math.round(data.main.temp)} °C</div>
+
+            <div className="wind">
+              <Weather.Wind />
+              <span className="wind-speed">{data.wind.speed} km/h</span>
+            </div>
+          </div>
+
+          <div className="icon">
+            { Weather.mapWeatherIDtoIcon(data.weather[0].id) }
           </div>
         </article>
       </div>
