@@ -39,7 +39,7 @@ class GeolocForm extends Component {
       <div className="form-horizontal" style={style}>
         { /* City field */ }
         <div className={classNames('form-group', { 'has-error': this.state.errors.lat })}>
-          <label className="control-label col-md-3">Lat:</label>
+          <label className="control-label col-md-3">Latitude</label>
           <div className="col-md-9">
             <input
               type="number"
@@ -52,7 +52,7 @@ class GeolocForm extends Component {
 
         { /* Country field */ }
         <div className={classNames('form-group', { 'has-error': this.state.errors.lng })}>
-          <label className="control-label col-md-3">Lng:</label>
+          <label className="control-label col-md-3">Longitude</label>
           <div className="col-md-9">
             <input
               type="number"
