@@ -13,11 +13,9 @@ describe('CityForm', () => {
   })
 
   describe('when component is visible', () => {
-    beforeEach = () => {
-      spyOn(mock, 'searchCallback')
-    }
+    beforeEach = () => { spyOn(mock, 'searchCallback') }
 
-    const mock = { searchCallback: jest.fn() }
+    const mock = { searchCallback: jasmine.createSpy('spy') }
     const subject = ReactTestUtils.renderIntoDocument(<CityForm isVisible={true} searchCallback={mock.searchCallback} />)
     const submitButton = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'btn')
 
@@ -32,6 +30,15 @@ describe('CityForm', () => {
       // Asserts the callback
       expect(mock.searchCallback).toHaveBeenCalledWith('Berlin', 'DE')
     })
-  })
 
+    it('should not invoke the callback if some field is missing', () => {
+      mock.searchCallback.calls.reset()
+      subject.cityField.value = ''
+
+      // Trigger the search
+      ReactTestUtils.Simulate.click(submitButton)
+
+      expect(mock.searchCallback).not.toHaveBeenCalled()
+    })
+  })
 })
