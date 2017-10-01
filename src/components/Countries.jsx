@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const Countries = () => (
-  <select>
-    <option disabled="disabled">Other Countries</option>
-
-    <option value="US" selected>USA</option>
+export const Countries = (props) => (
+  <select className='form-control country-field' defaultValue='' onChange={props.onChange}>
+    <option value=''>Choose a country</option>
+    <option value="DE">Germany</option>
     <option value="GB">UK</option>
+    <option value="US">USA</option>
     <option value="DZ">Algeria</option>
     <option value="AD">Andorra</option>
     <option value="AO">Angola</option>
@@ -74,7 +74,6 @@ export const Countries = () => (
     <option value="GA">Gabon</option>
     <option value="GM">Gambia</option>
     <option value="GE">Georgia</option>
-    <option value="DE">Germany</option>
     <option value="GH">Ghana</option>
     <option value="GI">Gibraltar</option>
     <option value="GR">Greece</option>
@@ -220,3 +219,5 @@ export const Countries = () => (
     <option value="ZW">Zimbabwe</option>
   </select>
 )
+
+export default Countries
