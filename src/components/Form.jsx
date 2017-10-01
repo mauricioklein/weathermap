@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import FormSelector from './FormSelector'
 import CityForm from './CityForm'
 import GeolocForm from './GeolocForm'
-import WeatherDisplay from './WeatherDisplay'
+import { WeatherDisplay } from './WeatherDisplay'
 import {
   getWeatherForGeoloc,
   getWeatherForCity
@@ -40,7 +40,11 @@ class Form extends Component {
             loaded: true,
             data: response
           })
-        }
+        },
+        error => this.setState({
+          loaded: true,
+          data: null
+        })
       )
   }
 
@@ -52,7 +56,11 @@ class Form extends Component {
             loaded: true,
             data: response
           })
-        }
+        },
+        error => this.setState({
+          loaded: true,
+          data: null
+        })
       )
   }
 

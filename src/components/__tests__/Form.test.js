@@ -64,20 +64,42 @@ describe('Form', () => {
     const mockObj = require('superagent-mock')(request, apiMocks.rules)
 
     describe('city search', () => {
-      beforeEach(() => subject.triggerSearchByCity('Berlin', 'DE'))
+      describe('with success result', () => {
+        beforeEach(() => subject.triggerSearchByCity('Berlin', 'DE'))
 
-      it('should update the state', () => {
-        expect(subject.state.loaded).toEqual(true)
-        expect(subject.state.data).toEqual(apiMocks.cityResponse)
+        it('should update the state with the result', () => {
+          expect(subject.state.loaded).toEqual(true)
+          expect(subject.state.data).toEqual(apiMocks.cityResponse)
+        })
+      })
+
+      describe('with fail result', () => {
+        beforeEach(() => subject.triggerSearchByCity('Foo', 'Bar'))
+
+        it('should update the state with null result', () => {
+          expect(subject.state.loaded).toEqual(true)
+          expect(subject.state.data).toEqual(null)
+        })
       })
     })
 
     describe('geoloc search', () => {
-      beforeEach(() => subject.triggerSearchByGeoloc('10', '20'))
+      describe('with success result', () => {
+        beforeEach(() => subject.triggerSearchByGeoloc('10', '20'))
 
-      it('should update the state', () => {
-        expect(subject.state.loaded).toEqual(true)
-        expect(subject.state.data).toEqual(apiMocks.geolocResponse)
+        it('should update the state', () => {
+          expect(subject.state.loaded).toEqual(true)
+          expect(subject.state.data).toEqual(apiMocks.geolocResponse)
+        })
+      })
+
+      describe('with fail result', () => {
+        beforeEach(() => subject.triggerSearchByGeoloc('Foo', 'Bar'))
+
+        it('should update the state', () => {
+          expect(subject.state.loaded).toEqual(true)
+          expect(subject.state.data).toEqual(null)
+        })
       })
     })
   })
