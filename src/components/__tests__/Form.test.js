@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
+import localStorage from 'mock-local-storage'
 import Form from '../Form'
 import CityForm from '../CityForm'
 import GeolocForm from '../GeolocForm'
