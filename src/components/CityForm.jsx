@@ -1,31 +1,43 @@
 import React, { Component } from 'react'
+import { Countries } from './Countries'
 
 const classNames = require('classnames')
 
 class CityForm extends Component {
   constructor(props) {
     super(props)
-    this.state = { errors: {} }
-    this.callback = this.callback.bind(this)
+    this.state = {
+      city: '',
+      country: '',
+      errors: {}
+    }
+    this.search = this.search.bind(this)
   }
 
-  callback() {
-    const { props, cityField, countryField } = this
+  search() {
+    const { city, country } = this.state
 
-    if(this.hasInvalidFields()) { return }
+    if(this.hasInvalidFields(city, country)) { return }
 
-    props.searchCallback(
-      cityField.value,
-      countryField.value
-    )
+    this.props.searchCallback(city, country)
   }
 
-  hasInvalidFields() {
-    const { cityField, countryField } = this
+  setCity(ev) {
+    this.setState({
+      city: ev.target.value
+    })
+  }
 
+  setCountry(ev) {
+    this.setState({
+      country: ev.target.value
+    })
+  }
+
+  hasInvalidFields(city, country) {
     const errors = {
-      city:    cityField.value === '',
-      country: countryField.value === ''
+      city:    city === '',
+      country: country === ''
     }
 
     this.setState({errors: errors})
@@ -41,12 +53,12 @@ class CityForm extends Component {
       <div className="form-horizontal" style={style}>
         { /* City field */ }
         <div className={classNames('form-group', { 'has-error': this.state.errors.city })}>
-          <label className="control-label col-md-3">City:</label>
+          <label className="control-label col-md-3">City</label>
           <div className="col-md-9">
             <input
               type="text"
-              ref={(input) => this.cityField = input}
-              className="form-control"
+              onChange={(ev) => this.setCity(ev)}
+              className="form-control city-field"
               placeholder="Enter city (e.g. London)"
             />
           </div>
@@ -54,21 +66,16 @@ class CityForm extends Component {
 
         { /* Country field */ }
         <div className={classNames('form-group', { 'has-error': this.state.errors.country })}>
-          <label className="control-label col-md-3">Country Code:</label>
+          <label className="control-label col-md-3">Country</label>
           <div className="col-md-9">
-            <input
-              type="text"
-              ref={(input) => this.countryField = input}
-              className="form-control"
-              placeholder="Enter country code (e.g. UK)"
-            />
+            <Countries onChange={(ev) => this.setCountry(ev)} />
           </div>
         </div>
 
         { /* Submit button */ }
         <div className="form-group">
           <div className="col-md-10 col-md-offset-2">
-            <button onClick={this.callback} className="btn btn-default">Search</button>
+            <button className="btn btn-default" onClick={this.search}>Search</button>
           </div>
         </div>
       </div>
