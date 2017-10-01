@@ -1,26 +1,16 @@
 import request from 'superagent';
 import localStorage from 'mock-local-storage'
 import { getWeatherForGeoloc, getWeatherForCity } from '../get'
-import * as apiMocks from '../../../utils/mocks/api'
-
-const customMatchers = {
-  toContainOnLocalStorage: () => ({
-    compare: (key, value) => ({
-      pass: window.localStorage.getItem(key) === JSON.stringify(value),
-      message: () => `Value on store for "${key}" is wrong`
-    })
-  })
-}
+import * as apiMocks from '../../../test_utils/api_mocks'
+import '../../../test_utils/custom_expectations'
 
 describe('API', () => {
   var mock = null
-  beforeEach(() => {
-    mock = require('superagent-mock')(request, apiMocks.rules)
+  beforeEach(() => mock = require('superagent-mock')(request, apiMocks.rules))
+  afterEach(() => {
+    mock.unset()
     window.localStorage.clear()
   })
-  afterEach(() => mock.unset())
-
-  jasmine.addMatchers(customMatchers)
 
   describe('#getWeatherForCity', () => {
     it('should get result from API', () => {

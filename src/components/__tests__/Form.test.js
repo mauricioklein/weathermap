@@ -7,7 +7,7 @@ import GeolocForm from '../GeolocForm'
 
 // Superagent mock
 import request from 'superagent';
-import * as apiMocks from '../../utils/mocks/api'
+import * as apiMocks from '../../test_utils/api_mocks'
 
 describe('Form', () => {
   const subject = ReactTestUtils.renderIntoDocument(<Form />)

@@ -2,19 +2,10 @@ import request from 'superagent';
 import localStorage from 'mock-local-storage'
 import * as Storage from '../storage'
 
-const customMatchers = {
-  toContainOnLocalStorage: () => ({
-    compare: (key, value) => ({
-      pass: window.localStorage.getItem(key) === JSON.stringify(value),
-      message: () => `Value on store for "${key}" is wrong`
-    })
-  })
-}
+import '../../../test_utils/custom_expectations'
 
 describe('Storage', () => {
   afterEach(() => window.localStorage.clear())
-
-  jasmine.addMatchers(customMatchers)
 
   const result = { foo: 'bar' }
 
