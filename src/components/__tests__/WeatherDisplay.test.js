@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
-import WeatherDisplay from '../WeatherDisplay'
+import { WeatherDisplay } from '../WeatherDisplay'
 import * as ApiMocks from '../../test_utils/api_mocks'
 
 /*
@@ -48,6 +48,15 @@ describe('WeatherDisplay', () => {
       expect(temperature).toEqual('22 °C')
       expect(windSpeed  ).toEqual('6.23 km/h')
       expect(rainCloudIcon).not.toBeNull()
+    })
+  })
+
+  describe('with null data', () => {
+    const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={null} />)
+    const message = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp').textContent
+
+    it('should render the not found component', () => {
+      expect(message).toEqual('Not Found')
     })
   })
 })
