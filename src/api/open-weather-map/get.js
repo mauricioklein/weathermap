@@ -1,6 +1,17 @@
 import request from 'superagent';
+import * as Store from './storage'
+
+export const getWeatherForGeoloc = (lat, lng) => {
+  const storedResult = Store.lookupGeoloc(lat, lng)
+  return (storedResult != null) ? Promise.resolve(storedResult) : fetchGeolocAndStore(lat, lng)
+}
 
 export const getWeatherForCity = (city, country) => {
+  const storedResult = Store.lookupCity(city, country)
+  return (storedResult != null) ? Promise.resolve(storedResult) : fetchCityAndStore(city, country)
+}
+
+const fetchCityAndStore = (city, country) => {
   return new Promise((resolve, reject) => {
     request
       .get('http://api.openweathermap.org/data/2.5/weather')
@@ -11,12 +22,15 @@ export const getWeatherForCity = (city, country) => {
       })
       .end((err, res) => {
         if (err) { reject (err)      }
-        else     { resolve(res.body) }
+        else     {
+          Store.storeCity(city, country, res.body)
+          resolve(res.body)
+        }
       })
   })
 }
 
-export const getWeatherForGeoloc = (lat, lng) => {
+const fetchGeolocAndStore = (lat, lng) => {
   return new Promise((resolve, reject) => {
     request
       .get('http://api.openweathermap.org/data/2.5/weather')
@@ -28,7 +42,10 @@ export const getWeatherForGeoloc = (lat, lng) => {
       })
       .end((err, res) => {
         if (err) { reject (err)      }
-        else     { resolve(res.body) }
+        else     {
+          Store.storeGeoloc(lat, lng, res.body)
+          resolve(res.body)
+        }
       })
   })
 }
