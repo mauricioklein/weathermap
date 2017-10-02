@@ -1,9 +1,12 @@
+[![Build Status](https://travis-ci.org/mauricioklein/weathermap.svg?branch=master)](https://travis-ci.org/mauricioklein/weathermap)
+
 # Weathermap
 
 A React application that displays the weather information for a specific location
 
 ## Dependencies
 
+- Node 8
 - Yarn (you can find the installation instructions [here](https://yarnpkg.com/en/docs/install))
 
 ## Setup
