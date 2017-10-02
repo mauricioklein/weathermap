@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mauricioklein/weathermap.svg?branch=master)](https://travis-ci.org/mauricioklein/weathermap)
+[![Coverage Status](https://coveralls.io/repos/github/mauricioklein/weathermap/badge.svg?branch=travis)](https://coveralls.io/github/mauricioklein/weathermap?branch=travis)
 
 # Weathermap
 
