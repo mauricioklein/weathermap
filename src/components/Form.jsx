@@ -3,10 +3,8 @@ import FormSelector from './FormSelector'
 import CityForm from './CityForm'
 import GeolocForm from './GeolocForm'
 import { WeatherDisplay } from './WeatherDisplay'
-import {
-  getWeatherForGeoloc,
-  getWeatherForCity
-} from '../api/open-weather-map/get'
+import { getWeatherForGeoloc, getWeatherForCity } from '../api/open-weather-map/get'
+import './Form.css'
 
 const CITY_FORM_ID = 'city'
 const GEOLOC_FORM_ID = 'geoloc'
@@ -68,7 +66,7 @@ class Form extends Component {
     const { form, loaded, data } = this.state
 
     return (
-      <div className="container">
+      <div className="app container">
         <div className="col-sm-6">
           <FormSelector
             activateCityForm={() => this.setActiveForm(CITY_FORM_ID)}
