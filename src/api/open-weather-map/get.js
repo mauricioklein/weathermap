@@ -21,8 +21,8 @@ const fetchCityAndStore = (city, country) => {
         APPID: 'b433f7bbb7535c9a63909a7f9472b4a2'
       })
       .end((err, res) => {
-        if (err) { reject (err)      }
-        else     {
+        if (err) { reject (err) }
+        else {
           Store.storeCity(city, country, res.body)
           resolve(res.body)
         }
@@ -41,8 +41,8 @@ const fetchGeolocAndStore = (lat, lng) => {
         APPID: 'b433f7bbb7535c9a63909a7f9472b4a2'
       })
       .end((err, res) => {
-        if (err) { reject (err)      }
-        else     {
+        if (err) { reject (err) }
+        else {
           Store.storeGeoloc(lat, lng, res.body)
           resolve(res.body)
         }

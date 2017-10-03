@@ -1,6 +1,5 @@
 import React from 'react';
 import { Icon, Wind } from '.'
-
 import './WeatherDisplay.css'
 
 const lookup = require('country-data').lookup
