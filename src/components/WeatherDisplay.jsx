@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Wind } from '.'
+import { WeatherIcon, Wind } from '.'
 import './WeatherDisplay.css'
 
 const lookup = require('country-data').lookup
@@ -24,7 +24,7 @@ const Overview = ({data}) => (
         </div>
 
         <div className="icon">
-          <Icon id={data.weather[0].id} />
+          <WeatherIcon weatherId={data.weather[0].id} />
         </div>
       </article>
     </div>

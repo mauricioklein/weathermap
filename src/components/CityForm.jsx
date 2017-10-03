@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Countries } from './Countries'
+import { Countries } from '.'
 
 const classNames = require('classnames')
 

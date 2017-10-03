@@ -4,4 +4,13 @@ export { default as Form           } from './Form'
 export { default as FormSelector   } from './FormSelector'
 export { default as GeolocForm     } from './GeolocForm'
 export { default as WeatherDisplay } from './WeatherDisplay'
-export { Icon, Wind                } from './weather/Icon'
+export {
+  RainCloud,
+  SnowCloud,
+  SunCloud,
+  Sunshine,
+  ThunderCloud,
+  WeatherIcon,
+  Wind,
+  WindyCloud,
+} from './weather/Icon'

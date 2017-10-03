@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import * as WeatherIcon from '../../weather/Icon'
-
-/*
-  ReactTestUtils isn't able to recognize a stateless function
-  as a React component. So, we wrap the real component in a
-  stateful component for testing purposes
-*/
-class Wrapper extends Component {
-  render() { return(this.props.inst) }
-}
+import Wrapper from '../../../test-utils/component-wrapper'
 
 describe('Weather', () => {
-  describe('mapWeatherIDtoIcon', () => {
-    const subject = (id) => WeatherIcon.Icon({id: id})
+  describe('WeatherIcon', () => {
+    const subject = (id) => WeatherIcon.WeatherIcon({weatherId: id})
 
     it('should map 2** to ThunderCloud', () => {
       expect(subject(200).type).toBe(WeatherIcon.ThunderCloud)
@@ -64,37 +56,37 @@ describe('Weather', () => {
 
   describe('Icons', () => {
     it('should render a ThunderCloud icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.ThunderCloud />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.ThunderCloud />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'thunder-cloud')).toBeDefined()
     })
 
     it('should render a RainCloud icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.RainCloud />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.RainCloud />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'rain-cloud')).toBeDefined()
     })
 
     it('should render a SnowCloud icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.SnowCloud />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.SnowCloud />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'snow-cloud')).toBeDefined()
     })
 
     it('should render a SunCloud icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.SunCloud />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.SunCloud />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'sun-cloud')).toBeDefined()
     })
 
     it('should render a Sunshine icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.Sunshine />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.Sunshine />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'sunshine')).toBeDefined()
     })
 
     it('should render a WindyCloud icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.WindyCloud />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.WindyCloud />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'windy-cloud')).toBeDefined()
     })
 
     it('should render a Wind icon correctly', () => {
-      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper inst={<WeatherIcon.Wind />} />)
+      const subject =  ReactTestUtils.renderIntoDocument(<Wrapper component={<WeatherIcon.Wind />} />)
       expect(ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'wind')).toBeDefined()
     })
   })
