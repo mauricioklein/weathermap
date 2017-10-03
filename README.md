@@ -8,7 +8,7 @@ A React application that displays the weather information for a specific locatio
 ## Dependencies
 
 - Node 8
-- Yarn (you can find the installation instructions [here](https://yarnpkg.com/en/docs/install))
+- Yarn 1.1.0 (you can find the installation instructions [here](https://yarnpkg.com/en/docs/install))
 
 ## Setup
 
@@ -40,12 +40,14 @@ $ yarn start
 
 # ... or build and serve the standalone application
 $ yarn build
-$ yarn serve [-p {Port} (default: 3000)]
+$ yarn serve [-p {Port} (default: 5000)]
 ```
 
 ## Docker
 
 This project provides a `Dockerfile`, which is an easy, reliable and portable way of running the application.
+
+Instructions on how to install Docker can be found [here](https://docs.docker.com/engine/installation/).
 
 First of all, build the Docker image for the weather application:
 
@@ -69,7 +71,7 @@ And finally, serve the application:
 $ docker run -p 3000:3000 -d weathermap serve
 ```
 
-The application is now live on http://localhost:3000
+The application is now live on http://localhost:5000
 
 ## Todo
 
