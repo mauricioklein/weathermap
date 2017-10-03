@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/mauricioklein/weathermap.svg?branch=master)](https://travis-ci.org/mauricioklein/weathermap)
-[![Coverage Status](https://coveralls.io/repos/github/mauricioklein/weathermap/badge.svg?branch=travis)](https://coveralls.io/github/mauricioklein/weathermap?branch=travis)
+[![Coverage Status](https://coveralls.io/repos/github/mauricioklein/weathermap/badge.svg?branch=master)](https://coveralls.io/github/mauricioklein/weathermap?branch=master)
 
 # Weathermap
 
@@ -71,7 +71,7 @@ And finally, serve the application:
 $ docker run -p 3000:3000 -d weathermap serve
 ```
 
-The application is now live on http://localhost:5000
+The application is now live on http://localhost:3000
 
 ## Todo
 
