@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import { WeatherDisplay } from '../WeatherDisplay'
-import * as ApiMocks from '../../test_utils/api_mocks'
+import * as ApiMocks from '../../test-utils/api-mocks'
 
 /*
   ReactTestUtils isn't able to recognize a stateless function

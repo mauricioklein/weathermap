@@ -2,7 +2,7 @@ import request from 'superagent';
 import localStorage from 'mock-local-storage'
 import * as Storage from '../storage'
 
-import '../../../test_utils/custom_expectations'
+import '../../../test-utils/custom-expectations'
 
 describe('Storage', () => {
   afterEach(() => window.localStorage.clear())
