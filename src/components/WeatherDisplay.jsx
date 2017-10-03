@@ -1,5 +1,5 @@
 import React from 'react';
-import * as WeatherIcon from './weather/Icon'
+import { Icon, Wind } from '.'
 
 import './WeatherDisplay.css'
 
@@ -19,13 +19,13 @@ const Overview = ({data}) => (
           <div className="temp">{Math.round(data.main.temp)} °C</div>
 
           <div className="wind">
-            <Weather.Wind />
+            <Wind />
             <span className="wind-speed">{data.wind.speed} km/h</span>
           </div>
         </div>
 
         <div className="icon">
-          { WeatherIcon.iconForWeatherID(data.weather[0].id) }
+          <Icon id={data.weather[0].id} />
         </div>
       </article>
     </div>
@@ -48,3 +48,5 @@ const generateOutline = ({sys, coord}) => {
   if (sys.country === undefined) { return `${coord.lat},${coord.lon}` }
   else                           { return lookup.countries({alpha2: sys.country})[0].name }
 }
+
+export default WeatherDisplay

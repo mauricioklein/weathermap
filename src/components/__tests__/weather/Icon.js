@@ -13,7 +13,7 @@ class Wrapper extends Component {
 
 describe('Weather', () => {
   describe('mapWeatherIDtoIcon', () => {
-    const subject = WeatherIcon.iconForWeatherID
+    const subject = (id) => WeatherIcon.Icon({id: id})
 
     it('should map 2** to ThunderCloud', () => {
       expect(subject(200).type).toBe(WeatherIcon.ThunderCloud)

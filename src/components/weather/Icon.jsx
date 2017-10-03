@@ -1,21 +1,21 @@
 import React from 'react'
 import './Icon.css'
 
-export const iconForWeatherID = (id) => {
+export const Icon = (props) => {
   switch(true) {
-    case between(id, 200, 299):
+    case between(props.id, 200, 299):
       return <ThunderCloud />
 
-    case between(id, 300, 399) || between(id, 500, 599):
+    case between(props.id, 300, 399) || between(props.id, 500, 599):
       return <RainCloud />
 
-    case between(id, 600, 699):
+    case between(props.id, 600, 699):
       return <SnowCloud />
 
-    case between(id, 700, 799):
+    case between(props.id, 700, 799):
       return <WindyCloud />
 
-    case between(id, 801, 809):
+    case between(props.id, 801, 809):
       return <SunCloud />
 
     default: return <Sunshine />

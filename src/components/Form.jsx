@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-import FormSelector from './FormSelector'
-import CityForm from './CityForm'
-import GeolocForm from './GeolocForm'
-import { WeatherDisplay } from './WeatherDisplay'
-import { getWeatherForGeoloc, getWeatherForCity } from '../api/open-weather-map/get'
+import {
+  FormSelector,
+  CityForm,
+  GeolocForm,
+  WeatherDisplay
+} from '.'
+import {
+  getWeatherForGeoloc,
+  getWeatherForCity
+} from '../api/open-weather-map/get'
 import './Form.css'
 
 const CITY_FORM_ID = 'city'
