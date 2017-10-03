@@ -70,15 +70,20 @@ class Form extends Component {
   render() {
     const { form, loaded, data } = this.state
 
+    const isCityActive   = (form === CITY_FORM_ID)
+    const isGeolocActive = (form === GEOLOC_FORM_ID)
+
     return (
       <div className="app container">
         <div className="col-sm-6">
           <FormSelector
+            isCityActive={isCityActive}
+            isGeolocActive={isGeolocActive}
             activateCityForm={() => this.setActiveForm(CITY_FORM_ID)}
             activateGeolocForm={() => this.setActiveForm(GEOLOC_FORM_ID)}
           />
-          <CityForm   isVisible={form === CITY_FORM_ID}   searchCallback={this.triggerSearchByCity}   />
-          <GeolocForm isVisible={form === GEOLOC_FORM_ID} searchCallback={this.triggerSearchByGeoloc} />
+          <CityForm   isVisible={isCityActive}   searchCallback={this.triggerSearchByCity}   />
+          <GeolocForm isVisible={isGeolocActive} searchCallback={this.triggerSearchByGeoloc} />
         </div>
 
         <div className="col-sm-6">
