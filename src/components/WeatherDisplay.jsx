@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Weather from './weather/Weather'
+import * as WeatherIcon from './weather/Icon'
 
 import './WeatherDisplay.css'
 
@@ -25,7 +25,7 @@ const Overview = ({data}) => (
         </div>
 
         <div className="icon">
-          { Weather.mapWeatherIDtoIcon(data.weather[0].id) }
+          { WeatherIcon.iconForWeatherID(data.weather[0].id) }
         </div>
       </article>
     </div>

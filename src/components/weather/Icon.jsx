@@ -1,7 +1,7 @@
 import React from 'react'
-import './Styles.css'
+import './Icon.css'
 
-export const mapWeatherIDtoIcon = (id) => {
+export const iconForWeatherID = (id) => {
   switch(true) {
     case between(id, 200, 299):
       return <ThunderCloud />
