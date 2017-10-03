@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import FormSelector from '../FormSelector'
-
-/*
-  ReactTestUtils isn't able to recognize a stateless function
-  as a React component. So, we wrap the real component in a
-  stateful component for testing purposes
-*/
-class Wrapper extends Component {
-  render() { return(<FormSelector {...this.props} />) }
-}
+import Wrapper from '../../test-utils/component-wrapper'
 
 describe('FormSelector', () => {
   beforeEach = () => {
@@ -24,8 +16,12 @@ describe('FormSelector', () => {
 
   const subject = ReactTestUtils.renderIntoDocument(
     <Wrapper
-      activateCityForm={mock.cityFormCallback}
-      activateGeolocForm={mock.geolocFormCallback}
+      component={
+        <FormSelector
+          activateCityForm={mock.cityFormCallback}
+          activateGeolocForm={mock.geolocFormCallback}
+        />
+      }
     />
   )
 

@@ -2,20 +2,16 @@ import React, { Component } from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import { WeatherDisplay } from '../WeatherDisplay'
 import * as ApiMocks from '../../test-utils/api-mocks'
-
-/*
-  ReactTestUtils isn't able to recognize a stateless function
-  as a React component. So, we wrap the real component in a
-  stateful component for testing purposes
-*/
-class Wrapper extends Component {
-  render() { return(<WeatherDisplay {...this.props} />) }
-}
+import Wrapper from '../../test-utils/component-wrapper'
 
 describe('WeatherDisplay', () => {
   describe('with weather for city', () => {
     const data = ApiMocks.cityResponse
-    const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={data} />)
+    const subject = ReactTestUtils.renderIntoDocument(
+      <Wrapper
+        component={<WeatherDisplay data={data} />}
+      />
+    )
 
     const outline =      ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city'       ).textContent
     const description =  ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'description').textContent
@@ -34,7 +30,11 @@ describe('WeatherDisplay', () => {
 
   describe('with weather for geoloc', () => {
     const data = ApiMocks.geolocResponse
-    const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={data} />)
+    const subject = ReactTestUtils.renderIntoDocument(
+      <Wrapper
+        component={<WeatherDisplay data={data} />}
+      />
+    )
 
     const outline =       ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'city'       ).textContent
     const description =   ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'description').textContent
@@ -52,7 +52,11 @@ describe('WeatherDisplay', () => {
   })
 
   describe('with null data', () => {
-    const subject = ReactTestUtils.renderIntoDocument(<Wrapper data={null} />)
+    const subject = ReactTestUtils.renderIntoDocument(
+      <Wrapper
+        component={<WeatherDisplay data={null} />}
+      />
+    )
     const message = ReactTestUtils.findRenderedDOMComponentWithClass(subject, 'temp').textContent
 
     it('should render the not found component', () => {
