@@ -68,7 +68,7 @@ And finally, serve the application:
 ```bash
 # Run the application
 # (attach the container port 3000 to localhost:3000)
-$ docker run -p 3000:3000 -d weathermap serve
+$ docker run -p 3000:3000 -d weathermap
 ```
 
 The application is now live on http://localhost:3000
