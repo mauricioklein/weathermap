@@ -1,18 +1,13 @@
 <template>
   <div>
     <div class="col-sm-6">
-      <FormSelector
-        :isCityActive="isCityActive"
-        :isGeolocActive="isGeolocActive"
-        :activateCityForm="activateCityForm"
-        :activateGeolocForm="activateGeolocForm"
-      />
-      <CityForm v-show="isCityActive" :searchCallback="searchByCityCallback" />
-      <GeolocForm v-show="isGeolocActive" :searchCallback="searchByGeolocCallback" />
+      <FormSelector />
+      <CityForm v-show="isCityFormActive" :searchCallback="searchByCityCallback" />
+      <GeolocForm v-show="isGeolocFormActive" :searchCallback="searchByGeolocCallback" />
     </div>
 
     <div class="col-sm-6">
-      <WeatherDisplay :weather="weather" />
+      <WeatherDisplay />
     </div>
   </div>
 </template>
@@ -24,7 +19,7 @@ import CityForm from './CityForm.vue'
 import GeolocForm from './GeolocForm.vue'
 import WeatherDisplay from './WeatherDisplay.vue'
 
-import { Weather } from './types'
+import UIStore, { FormType } from '../store/ui'
 
 export default Vue.extend({
   name: 'MainForm',
@@ -36,17 +31,14 @@ export default Vue.extend({
     WeatherDisplay
   },
 
+  computed: {
+    isCityFormActive: () => (UIStore.state.activeScreen === FormType.CITY),
+    isGeolocFormActive: () => (UIStore.state.activeScreen === FormType.GEOLOC)
+  },
+
   props: {
-    isCityActive: Boolean,
-    isGeolocActive: Boolean,
-
-    activateCityForm: Function,
-    activateGeolocForm: Function,
-
     searchByCityCallback: Function,
-    searchByGeolocCallback: Function,
-
-    weather: Object as () => Weather
+    searchByGeolocCallback: Function
   }
 })
 </script>

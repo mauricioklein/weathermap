@@ -5,8 +5,8 @@
         <button
           type="button"
           class="btn btn-default active"
-          :class="{ active: isCityActive }"
-          @click="activateCityForm"
+          :class="{ active: isCityFormActive }"
+          @click="switchToCityForm"
         >
           Search by City
         </button>
@@ -16,10 +16,10 @@
         <button
           type="button"
           class="btn btn-default active"
-          :class="{ active: isGeolocActive }"
-          @click="activateGeolocForm"
+          :class="{ active: isGeolocFormActive }"
+          @click="switchToGeolocForm"
         >
-          Search by City
+          Search by Geolocation
         </button>
       </div>
     </div>
@@ -28,15 +28,19 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import UIStore, { FormType } from '../store/ui'
 
 export default Vue.extend({
   name: 'FormSelector',
 
-  props: {
-    isCityActive: Boolean,
-    isGeolocActive: Boolean,
-    activateCityForm: Function,
-    activateGeolocForm: Function
+  computed: {
+    isCityFormActive: () => (UIStore.state.activeScreen === FormType.CITY),
+    isGeolocFormActive: () => (UIStore.state.activeScreen === FormType.GEOLOC)
+  },
+
+  methods: {
+    switchToCityForm: () => { UIStore.commit('setActiveScreen', FormType.CITY) },
+    switchToGeolocForm: () => { UIStore.commit('setActiveScreen', FormType.GEOLOC) }
   }
 })
 </script>

@@ -2,13 +2,8 @@
   <div class="app container">
     <center>
       <MainForm
-        :isCityActive="isCityActive"
-        :isGeolocActive="isGeolocActive"
-        :activateCityForm="activateCityForm"
-        :activateGeolocForm="activateGeolocForm"
         :searchByCityCallback="searchByCity"
         :searchByGeolocCallback="searchByGeoloc"
-        :weather="weather"
       />
     </center>
   </div>
@@ -17,6 +12,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MainForm } from './components'
+import WeatherStore from './store/weather'
 
 import {
   getWeatherForGeoloc,
@@ -28,54 +24,26 @@ enum ActiveForm { CITY, GEOLOC }
 export default Vue.extend({
   name: 'app',
 
-  data: () => ({
-    activeForm: ActiveForm.CITY,
-    weather: {
-      loaded: false,
-      data: {}
-    }
-  }),
-
   components: {
     MainForm
   },
 
-  computed: {
-    isCityActive: function () { return this.activeForm === ActiveForm.CITY },
-    isGeolocActive: function () { return this.activeForm === ActiveForm.GEOLOC }
-  },
-
   methods: {
-    activateCityForm: function () { this.activeForm = ActiveForm.CITY },
-    activateGeolocForm: function () { this.activeForm = ActiveForm.GEOLOC },
-
     searchByCity: async function (city: string, country: string) {
       try {
-        const response = await getWeatherForCity(city, country)
-        this.weather = {
-          loaded: true,
-          data: response
-        }
+        const data = await getWeatherForCity(city, country)
+        WeatherStore.commit('setSuccessData', data)
       } catch {
-        this.weather = {
-          loaded: false,
-          data: {}
-        }
+        WeatherStore.commit('setErrorData', {})
       }
     },
 
     searchByGeoloc: async function (lat: number, lng: number) {
       try {
-        const response = await getWeatherForGeoloc(lat, lng)
-        this.weather = {
-          loaded: true,
-          data: response
-        }
+        const data = await getWeatherForGeoloc(lat, lng)
+        WeatherStore.commit('setSuccessData', data)
       } catch {
-        this.weather = {
-          loaded: false,
-          data: {}
-        }
+        WeatherStore.commit('setErrorData', {})
       }
     }
   }

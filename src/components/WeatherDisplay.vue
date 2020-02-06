@@ -1,12 +1,12 @@
 <template>
   <div class="weather-container">
     <WeatherDisplayOverview
-      v-if="validData"
-      :name="weather.data.name"
-      :description="weather.data.weather[0].description"
-      :temperature="weather.data.main.temp"
-      :speed="weather.data.wind.speed"
-      :weatherId="weather.data.weather[0].id"
+      v-if="ok"
+      :name="weatherInfo.cityName"
+      :description="weatherInfo.description"
+      :temperature="weatherInfo.temperature"
+      :speed="weatherInfo.windSpeed"
+      :weatherId="weatherInfo.weatherId"
     />
     <WeatherDisplayNone v-else />
   </div>
@@ -16,15 +16,12 @@
 import Vue from 'vue'
 import WeatherDisplayOverview from './WeatherDisplayOverview.vue'
 import WeatherDisplayNone from './WeatherDisplayNone.vue'
+import WeatherStore from '../store/weather'
 
 import { Weather } from './types'
 
 export default Vue.extend({
   name: 'WeatherDisplay',
-
-  props: {
-    weather: Object as () => Weather
-  },
 
   components: {
     WeatherDisplayOverview,
@@ -32,9 +29,12 @@ export default Vue.extend({
   },
 
   computed: {
-    validData: function () {
-      // @ts-ignore
-      return this.weather.loaded
+    ok: function () {
+      return WeatherStore.getters.ok
+    },
+
+    weatherInfo: function () {
+      return WeatherStore.getters.info
     }
   }
 })
