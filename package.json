@@ -2,32 +2,30 @@
   "name": "weathermap",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "country-data": "0.0.31",
-    "jest-cli": "^21.2.0",
-    "react": "^15.6.2",
-    "react-bootstrap": "^0.31.3",
-    "react-dom": "^15.6.2",
-    "react-scripts": "1.0.13",
-    "superagent": "^3.6.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject",
-    "serve": "serve -s build"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.4.0",
+    "superagent": "^5.2.1",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
-    "mock-local-storage": "^1.0.5",
-    "superagent-mock": "^3.6.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/api/open-weather-map/**/*.{js,jsx}",
-      "src/components/**/*.{js,jsx}"
-    ]
+    "@types/jest": "^24.0.19",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-typescript": "^4.1.0",
+    "@vue/cli-plugin-unit-jest": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "typescript": "~3.5.3",
+    "vue-template-compiler": "^2.6.10"
   }
 }

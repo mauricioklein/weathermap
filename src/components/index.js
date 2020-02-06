@@ -1,16 +1,13 @@
-export { default as CityForm       } from './CityForm'
-export { default as Countries      } from './Countries'
-export { default as Form           } from './Form'
-export { default as FormSelector   } from './FormSelector'
-export { default as GeolocForm     } from './GeolocForm'
-export { default as WeatherDisplay } from './WeatherDisplay'
+import MainForm from './MainForm'
+import CityForm from './CityForm'
+import Countries from './Countries'
+import FormSelector from './FormSelector'
+import GeolocForm from './GeolocForm'
+
 export {
-  RainCloud,
-  SnowCloud,
-  SunCloud,
-  Sunshine,
-  ThunderCloud,
-  WeatherIcon,
-  Wind,
-  WindyCloud,
-} from './weather/Icon'
+  MainForm,
+  CityForm,
+  Countries,
+  FormSelector,
+  GeolocForm
+}

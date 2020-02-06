@@ -1,4 +1,4 @@
-import request from 'superagent';
+import request from 'superagent'
 import localStorage from 'mock-local-storage'
 import * as Storage from '../storage'
 import '../../../test-utils/custom-expectations'
@@ -43,5 +43,4 @@ describe('Storage', () => {
       expect('Berlin,DE').toContainOnLocalStorage(result)
     })
   })
-
 })

@@ -6,7 +6,7 @@ import React, { Component } from 'react'
   stateful component for testing purposes
 */
 class Wrapper extends Component {
-  render() {
+  render () {
     return this.props.component
   }
 }

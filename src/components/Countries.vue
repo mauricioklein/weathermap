@@ -1,7 +1,5 @@
-import React from 'react'
-
-export const Countries = (props) => (
-  <select className='form-control country-field' defaultValue='' onChange={props.onChange}>
+<template>
+  <select class='form-control' @change="onChange">
     <option value=''>Choose a country</option>
     <option value="DE">Germany</option>
     <option value="GB">UK</option>
@@ -218,6 +216,15 @@ export const Countries = (props) => (
     <option value="ZM">Zambia</option>
     <option value="ZW">Zimbabwe</option>
   </select>
-)
+</template>
 
-export default Countries
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'Countries',
+  props: {
+    onChange: Function
+  }
+})
+</script>

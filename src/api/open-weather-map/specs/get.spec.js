@@ -1,4 +1,4 @@
-import request from 'superagent';
+import request from 'superagent'
 import localStorage from 'mock-local-storage'
 import { getWeatherForGeoloc, getWeatherForCity } from '../get'
 import * as apiMocks from '../../../test-utils/api-mocks'
